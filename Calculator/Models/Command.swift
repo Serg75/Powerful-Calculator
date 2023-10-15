@@ -30,3 +30,22 @@ enum Command: String {
     case del = "<-"
     case reset = "C"
 }
+
+// Extend Command enum to categorize buttons
+extension Command {
+    var isDigit: Bool {
+        return [.d0, .d1, .d2, .d3, .d4, .d5, .d6, .d7, .d8, .d9, .sep ].contains(self)
+    }
+    
+    var isOperation: Bool {
+        return [.plus, .minus, .multiply, .divide].contains(self)
+    }
+    
+    var isFunction: Bool {
+        return [.sin, .cos, .bitcoin].contains(self)
+    }
+    
+    var isDeleteOrReset: Bool {
+        return [Command.del, Command.reset].contains(self)
+    }
+}
