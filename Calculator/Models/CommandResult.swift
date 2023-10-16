@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CommandResult: Identifiable, Equatable {
+struct CommandResult: Identifiable, Equatable, Hashable {
     var id = UUID()
     var expression: String
     var result: String

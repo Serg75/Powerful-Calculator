@@ -18,21 +18,36 @@ struct CalculatorView: View {
             let lastCommand = calculatorViewModel.commands.last
             
             // Display the list of previous commands and results
-            List(calculatorViewModel.commands) { command in
-                HStack {
-                    Text(command.expression)
-                    Spacer()
-                    Text(command.result)
+            ScrollViewReader { scrollView in
+                VStack {
+                    List {
+                        ForEach(calculatorViewModel.commands, id: \.self) { command in
+                            VStack (alignment: .leading) {
+                                Text(command.expression)
+                                if (!command.result.isEmpty) {
+                                    HStack {
+                                        Spacer()
+                                        Text("= \(command.result)")
+                                            .strikethrough(command.isOutdated)
+                                    }
+                                }
+                            }
+                            .modifier(RowBackgroundColorModifier(isDimmed: command.isOutdated))
+                            .modifier(RowForegroundColorModifier(isDimmed: command.isOutdated))
+                            .foregroundColor(command.isOutdated ? .primary : .secondary)
+                            .font(command == lastCommand ? .system(size: 21, weight: .bold) : .system(size: 20, weight: .regular))
+                        }
+                    }.onChange(of: calculatorViewModel.commands) { _ in
+                        withAnimation {
+                            scrollView.scrollTo(calculatorViewModel.commands.last!)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .listStyle(PlainListStyle())
+                    .border(Color.gray)
+                    .padding(.horizontal)
                 }
-                .modifier(RowBackgroundColorModifier(isDimmed: command.isOutdated))
-                .modifier(RowForegroundColorModifier(isDimmed: command.isOutdated))
-                .foregroundColor(command.isOutdated ? .primary : .secondary)
-                .font(command == lastCommand ? .system(size: 16, weight: .bold) : .system(size: 16, weight: .regular))
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .listStyle(PlainListStyle())
-            .border(Color.gray)
-            .padding(.horizontal)
 
             // Display the calculator buttons
             CalculatorButtonMatrix(calculatorViewModel: calculatorViewModel)
@@ -68,9 +83,7 @@ struct RowForegroundColorModifier: ViewModifier {
         CommandResult(expression: "3", result: "5", isOutdated: true),
         CommandResult(expression: "*", result: "", isOutdated: true),
         CommandResult(expression: "4", result: "20", isOutdated: true),
-        CommandResult(expression: "55", result: ""),
-        CommandResult(expression: "-", result: ""),
-        CommandResult(expression: "25", result: "30"),
+        CommandResult(expression: "30", result: ""),
         CommandResult(expression: "sin(30)", result: "0.5")
     ]
     return CalculatorView(calculatorViewModel: defaultViewModel)
