@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreCalculation
 
 struct CalculatorButtonMatrix: View {
     @ObservedObject var calculatorViewModel: CalculatorViewModel

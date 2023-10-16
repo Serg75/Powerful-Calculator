@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreCalculation
 
 class CalculatorViewModel: ObservableObject {
     @Published var commands: [CommandResult] = []
