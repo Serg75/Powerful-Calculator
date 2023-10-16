@@ -15,44 +15,47 @@ struct CalculatorView: View {
             Text("Calculator")
                 .font(.largeTitle)
             
-            let lastCommand = calculatorViewModel.commands.last
-            
-            // Display the list of previous commands and results
-            ScrollViewReader { scrollView in
-                VStack {
-                    List {
-                        ForEach(calculatorViewModel.commands, id: \.self) { command in
-                            VStack (alignment: .leading) {
-                                Text(command.expression)
-                                if (!command.result.isEmpty) {
-                                    HStack {
-                                        Spacer()
-                                        Text("= \(command.result)")
-                                            .strikethrough(command.isOutdated)
+            DynamicStack(verticalAlignment: .bottom, spacing: 10) {
+                let lastCommand = calculatorViewModel.commands.last
+                
+                // Display the list of previous commands and results
+                ScrollViewReader { scrollView in
+                    VStack {
+                        List {
+                            ForEach(calculatorViewModel.commands, id: \.self) { command in
+                                VStack (alignment: .leading) {
+                                    Text(command.expression)
+                                    if (!command.result.isEmpty) {
+                                        HStack {
+                                            Spacer()
+                                            Text("= \(command.result)")
+                                                .strikethrough(command.isOutdated)
+                                        }
                                     }
                                 }
+                                .modifier(RowBackgroundColorModifier(isDimmed: command.isOutdated))
+                                .modifier(RowForegroundColorModifier(isDimmed: command.isOutdated))
+                                .foregroundColor(command.isOutdated ? .primary : .secondary)
+                                .font(command == lastCommand ? .system(size: 21, weight: .bold) : .system(size: 20, weight: .regular))
                             }
-                            .modifier(RowBackgroundColorModifier(isDimmed: command.isOutdated))
-                            .modifier(RowForegroundColorModifier(isDimmed: command.isOutdated))
-                            .foregroundColor(command.isOutdated ? .primary : .secondary)
-                            .font(command == lastCommand ? .system(size: 21, weight: .bold) : .system(size: 20, weight: .regular))
+                        }.onChange(of: calculatorViewModel.commands) { _ in
+                            withAnimation {
+                                scrollView.scrollTo(calculatorViewModel.commands.last!)
+                            }
                         }
-                    }.onChange(of: calculatorViewModel.commands) { _ in
-                        withAnimation {
-                            scrollView.scrollTo(calculatorViewModel.commands.last!)
-                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .listStyle(PlainListStyle())
+                        .border(Color.gray)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .listStyle(PlainListStyle())
-                    .border(Color.gray)
-                    .padding(.horizontal)
                 }
-            }
 
-            // Display the calculator buttons
-            CalculatorButtonMatrix(calculatorViewModel: calculatorViewModel)
-                .padding()
+                Spacer()
+                
+                // Display the calculator buttons
+                CalculatorButtonMatrix(calculatorViewModel: calculatorViewModel)
+            }
         }
+        .padding()
     }
 }
 

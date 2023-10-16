@@ -19,6 +19,7 @@
 		952D3CE22AD81B5100A8EDCF /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952D3CE12AD81B5100A8EDCF /* CalculatorViewModel.swift */; };
 		952D3CE42AD81BDC00A8EDCF /* CommandResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952D3CE32AD81BDC00A8EDCF /* CommandResult.swift */; };
 		952D3CE62AD837F700A8EDCF /* OperationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952D3CE52AD837F700A8EDCF /* OperationButtonStyle.swift */; };
+		9539893D2ADD5B9A0099CB9D /* DynamicStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539893C2ADD5B9A0099CB9D /* DynamicStack.swift */; };
 		95CA66E02AD9D58A005797EC /* ArithmeticExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CA66DF2AD9D58A005797EC /* ArithmeticExpression.swift */; };
 		95CA66E22AD9DA49005797EC /* LogicCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CA66E12AD9DA49005797EC /* LogicCore.swift */; };
 		95CA66E52AD9EA09005797EC /* LogicCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CA66E42AD9EA09005797EC /* LogicCoreTests.swift */; };
@@ -64,6 +65,7 @@
 		952D3CE12AD81B5100A8EDCF /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 		952D3CE32AD81BDC00A8EDCF /* CommandResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandResult.swift; sourceTree = "<group>"; };
 		952D3CE52AD837F700A8EDCF /* OperationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationButtonStyle.swift; sourceTree = "<group>"; };
+		9539893C2ADD5B9A0099CB9D /* DynamicStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStack.swift; sourceTree = "<group>"; };
 		95CA66DF2AD9D58A005797EC /* ArithmeticExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticExpression.swift; sourceTree = "<group>"; };
 		95CA66E12AD9DA49005797EC /* LogicCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicCore.swift; sourceTree = "<group>"; };
 		95CA66E42AD9EA09005797EC /* LogicCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicCoreTests.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				952D3CDE2AD81B1200A8EDCF /* CalculatorButtonMatrix.swift */,
 				952D3CE52AD837F700A8EDCF /* OperationButtonStyle.swift */,
 				952D3CDC2AD81AE500A8EDCF /* CalculatorView.swift */,
+				9539893C2ADD5B9A0099CB9D /* DynamicStack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				952D3CDA2AD6EBA700A8EDCF /* Command.swift in Sources */,
 				952D3CDF2AD81B1200A8EDCF /* CalculatorButtonMatrix.swift in Sources */,
 				952D3CE62AD837F700A8EDCF /* OperationButtonStyle.swift in Sources */,
+				9539893D2ADD5B9A0099CB9D /* DynamicStack.swift in Sources */,
 				95CA66F02ADC0734005797EC /* EditableNumber.swift in Sources */,
 				95CA66E82ADA5DD3005797EC /* Double+Format.swift in Sources */,
 				952D3CE42AD81BDC00A8EDCF /* CommandResult.swift in Sources */,
