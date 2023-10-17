@@ -41,7 +41,7 @@ class CalculatorViewModel: ObservableObject {
     
     func generateCommandResults(_ expressions: [ArithmeticExpression]) {
         
-        var commandResults: [CommandResult] = []
+        var newCommands: [CommandResult] = []
         
         // Iterate through the expressions and convert them to command results
         for i in 0..<expressions.count {
@@ -56,12 +56,20 @@ class CalculatorViewModel: ObservableObject {
                     isOutdated: isOutdated
                 )
                 
-                commandResults.append(commandResult)
+                newCommands.append(commandResult)
             }
         }
         
-        // Update the @Published property to reflect the converted results
-        commands = commandResults
+        // Trick to keep the same id for the last CommandResult when it updating
+        // to fix animation bouncing.
+        let commandsCount = commands.count
+        if newCommands.count != commandsCount {
+            commands = newCommands
+        } else if commandsCount > 0 {
+            commands[commandsCount - 1].expression = newCommands[commandsCount - 1].expression
+            commands[commandsCount - 1].result = newCommands[commandsCount - 1].result
+            commands[commandsCount - 1].isOutdated = newCommands[commandsCount - 1].isOutdated
+        }
     }
 
     func handleBitcoin() {
