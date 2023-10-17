@@ -45,11 +45,9 @@ final class LogicCoreTests: XCTestCase {
         let traversalResult = logicCore.traverse(product)
 
         let expectedTraversal: [(String, Double?)] = [
-            ("2", nil),
-            ("+", nil),
-            ("3", 5),
-            ("*", nil),
-            ("4", 20)
+            ("2.0", nil),
+            ("+ 3.0", 5),
+            ("× 4.0", 20)
         ]
 
         // Swift tuples aren't Equatable, so we can't use them with simple equal assertion
@@ -69,14 +67,11 @@ final class LogicCoreTests: XCTestCase {
 
         let expectedTraversal: [(String, Double?)] = [
             ("5.5", nil),
-            ("/", nil),
-            ("0.1", 55),
-            ("-", nil),
-            ("25", 30),
-            ("sin(30)", 0.5),
-            ("*", nil),
-            ("360", 180),
-            ("cos(180)", -1),
+            ("÷ 0.1", 55),
+            ("- 25.0", 30),
+            ("sin(30º)", 0.5),
+            ("× 360.0", 180),
+            ("cos(180º)", -1),
         ]
 
         // Swift tuples aren't Equatable, so we can't use them with simple equal assertion

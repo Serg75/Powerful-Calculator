@@ -22,12 +22,12 @@ public enum Command: String {
     case sep = "."
     case plus = "+"
     case minus = "-"
-    case multiply = "*"
-    case divide = "/"
+    case multiply = "×"
+    case divide = "÷"
     case sin = "sin"
     case cos = "cos"
     case bitcoin = "₿"
-    case del = "<-"
+    case del = "⇦"
     case reset = "C"
 }
 

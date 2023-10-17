@@ -157,26 +157,22 @@ public class LogicCore {
             result.append((val.stringValue, nil))
         case let .addition(left, right):
             result.append(contentsOf: traverse(left))
-            result.append(("+", nil))
-            result.append((right.stringValue, evaluate(expression)))
+            result.append(("+ \(right.stringValue)", evaluate(expression)))
         case let .subtraction(left, right):
             result.append(contentsOf: traverse(left))
-            result.append(("-", nil))
-            result.append((right.stringValue, evaluate(expression)))
+            result.append(("- \(right.stringValue)", evaluate(expression)))
         case let .multiplication(left, right):
             result.append(contentsOf: traverse(left))
-            result.append(("*", nil))
-            result.append((right.stringValue, evaluate(expression)))
+            result.append(("× \(right.stringValue)", evaluate(expression)))
         case let .division(left, right):
             result.append(contentsOf: traverse(left))
-            result.append(("/", nil))
-            result.append((right.stringValue, evaluate(expression)))
+            result.append(("÷ \(right.stringValue)", evaluate(expression)))
         case let .sine(value):
             result.append(contentsOf: traverse(value))
-            result.append(("sin(\(evaluate(value).cleanString))", evaluate(expression)))
+            result.append(("sin(\(evaluate(value).cleanString)º)", evaluate(expression)))
         case let .cosine(value):
             result.append(contentsOf: traverse(value))
-            result.append(("cos(\(evaluate(value).cleanString))", evaluate(expression)))
+            result.append(("cos(\(evaluate(value).cleanString)º)", evaluate(expression)))
         case let .bitcoin(value):
             result.append(contentsOf: traverse(value))
             result.append(("₿(\(evaluate(value).cleanString))", evaluate(expression)))
