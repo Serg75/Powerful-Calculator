@@ -22,6 +22,7 @@
 		9539894D2ADDA70D0099CB9D /* FeatureToggling in Frameworks */ = {isa = PBXBuildFile; productRef = 9539894C2ADDA70D0099CB9D /* FeatureToggling */; };
 		95BA418E2ADDD6D800E99FB9 /* FeatureFlags.json in Resources */ = {isa = PBXBuildFile; fileRef = 95BA418D2ADDD6D800E99FB9 /* FeatureFlags.json */; };
 		95BA41922ADDFBE500E99FB9 /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA41912ADDFBE400E99FB9 /* View+ConditionalModifier.swift */; };
+		95BA41952ADE530E00E99FB9 /* BitcoinService in Frameworks */ = {isa = PBXBuildFile; productRef = 95BA41942ADE530E00E99FB9 /* BitcoinService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		9539894B2ADD7E200099CB9D /* FeatureToggling */ = {isa = PBXFileReference; lastKnownFileType = text; name = FeatureToggling; path = Modules/FeatureToggling; sourceTree = SOURCE_ROOT; };
 		95BA418D2ADDD6D800E99FB9 /* FeatureFlags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeatureFlags.json; sourceTree = "<group>"; };
 		95BA41912ADDFBE400E99FB9 /* View+ConditionalModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+ConditionalModifier.swift"; sourceTree = "<group>"; };
+		95BA41932ADE509000E99FB9 /* BitcoinService */ = {isa = PBXFileReference; lastKnownFileType = text; name = BitcoinService; path = Modules/BitcoinService; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9539894D2ADDA70D0099CB9D /* FeatureToggling in Frameworks */,
+				95BA41952ADE530E00E99FB9 /* BitcoinService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +200,7 @@
 		9539893E2ADD5F6A0099CB9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				95BA41932ADE509000E99FB9 /* BitcoinService */,
 				953989482ADD7BD10099CB9D /* CoreCalculation */,
 				9539894B2ADD7E200099CB9D /* FeatureToggling */,
 			);
@@ -236,6 +240,7 @@
 			name = Calculator;
 			packageProductDependencies = (
 				9539894C2ADDA70D0099CB9D /* FeatureToggling */,
+				95BA41942ADE530E00E99FB9 /* BitcoinService */,
 			);
 			productName = Calculator;
 			productReference = 951BDBE62AD6E8E70036BC9C /* Calculator.app */;
@@ -691,6 +696,10 @@
 		9539894C2ADDA70D0099CB9D /* FeatureToggling */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureToggling;
+		};
+		95BA41942ADE530E00E99FB9 /* BitcoinService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BitcoinService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

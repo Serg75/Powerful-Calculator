@@ -9,6 +9,8 @@ import Foundation
 
 public class LogicCore {
     
+    public var bitcoinValue: Double = .infinity
+
     public init() { }
         
     /// Evaluates given Arithmetic Expression into a result.
@@ -30,6 +32,8 @@ public class LogicCore {
             return sin(evaluate(value) * Double.pi / 180).roundedWithDecimals
         case let .cosine(value):
             return cos(evaluate(value) * Double.pi / 180).roundedWithDecimals
+        case let .bitcoin(value):
+            return bitcoinValue * evaluate(value)
         default:
             return 0.0
         }
@@ -173,6 +177,9 @@ public class LogicCore {
         case let .cosine(value):
             result.append(contentsOf: traverse(value))
             result.append(("cos(\(evaluate(value).cleanString))", evaluate(expression)))
+        case let .bitcoin(value):
+            result.append(contentsOf: traverse(value))
+            result.append(("₿(\(evaluate(value).cleanString))", evaluate(expression)))
         default:
             break
         }

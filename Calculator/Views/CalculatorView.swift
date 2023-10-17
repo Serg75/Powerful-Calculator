@@ -19,8 +19,8 @@ struct CalculatorView: View {
                 let lastCommand = calculatorViewModel.commands.last
                 
                 // Display the list of previous commands and results
-                ScrollViewReader { scrollView in
-                    VStack {
+                VStack {
+                    ScrollViewReader { scrollView in
                         List {
                             ForEach(calculatorViewModel.commands, id: \.self) { command in
                                 VStack (alignment: .leading) {
@@ -46,6 +46,11 @@ struct CalculatorView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .listStyle(PlainListStyle())
                         .border(Color.gray)
+                    }
+                    
+                    if calculatorViewModel.showErrorLabel {
+                        Text("The last bitcoin value is not available")
+                            .foregroundColor(.red)
                     }
                 }
 

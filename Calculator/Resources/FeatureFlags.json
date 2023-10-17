@@ -1,4 +1,5 @@
 {
+    "bitcoinConversion": true,
     "addition": true,
     "subtraction": true,
     "multiplication": true,

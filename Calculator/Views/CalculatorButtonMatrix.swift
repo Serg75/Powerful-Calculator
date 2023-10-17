@@ -111,7 +111,9 @@ func digits123(_ calculatorViewModel: CalculatorViewModel) -> some View {
     GridRow {
         ForEach(buttons, id: \.rawValue) { button in
             Button(button.rawValue) {
-                calculatorViewModel.handleButtonTap(button)
+                Task {
+                    await calculatorViewModel.handleButtonTap(button)
+                }
             }
             .buttonStyle(OperationButtonStyle())
         }
@@ -125,7 +127,9 @@ func digits456(_ calculatorViewModel: CalculatorViewModel) -> some View {
     GridRow {
         ForEach(buttons, id: \.rawValue) { button in
             Button(button.rawValue) {
-                calculatorViewModel.handleButtonTap(button)
+                Task {
+                    await calculatorViewModel.handleButtonTap(button)
+                }
             }
             .buttonStyle(OperationButtonStyle())
         }
@@ -139,7 +143,9 @@ func digits789(_ calculatorViewModel: CalculatorViewModel) -> some View {
     GridRow {
         ForEach(buttons, id: \.rawValue) { button in
             Button(button.rawValue) {
-                calculatorViewModel.handleButtonTap(button)
+                Task {
+                    await calculatorViewModel.handleButtonTap(button)
+                }
             }
             .buttonStyle(OperationButtonStyle())
         }
@@ -153,19 +159,25 @@ func digitsBottom(_ calculatorViewModel: CalculatorViewModel) -> some View {
         let bitcoinEnabled = Command.bitcoin.isEnabled
         
         Button(Command.d0.rawValue) {
-            calculatorViewModel.handleButtonTap(Command.d0)
+            Task {
+                await calculatorViewModel.handleButtonTap(Command.d0)
+            }
         }
         .buttonStyle(OperationButtonStyle())
         .if(!bitcoinEnabled) { $0.gridCellColumns(2) }
         
         Button(Command.sep.rawValue) {
-            calculatorViewModel.handleButtonTap(Command.sep)
+            Task {
+                await calculatorViewModel.handleButtonTap(Command.sep)
+            }
         }
         .buttonStyle(OperationButtonStyle())
 
         if (bitcoinEnabled) {
             Button(Command.bitcoin.rawValue) {
-                calculatorViewModel.handleButtonTap(Command.bitcoin)
+                Task {
+                    await calculatorViewModel.handleButtonTap(Command.bitcoin)
+                }
             }
             .buttonStyle(OperationButtonStyle())
         }

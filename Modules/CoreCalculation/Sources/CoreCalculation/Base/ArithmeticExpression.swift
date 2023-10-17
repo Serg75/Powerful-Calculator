@@ -15,6 +15,7 @@ public enum ArithmeticExpression {
     indirect case division(ArithmeticExpression, EditableNumber)
     indirect case sine(ArithmeticExpression)
     indirect case cosine(ArithmeticExpression)
+    indirect case bitcoin(ArithmeticExpression)
     case empty  // No expression
 }
 
@@ -82,6 +83,8 @@ extension ArithmeticExpression {
             self = .sine(self)
         case .cos:
             self = .cosine(self)
+        case .bitcoin:
+            self = .bitcoin(self)
         default:
             break
         }
