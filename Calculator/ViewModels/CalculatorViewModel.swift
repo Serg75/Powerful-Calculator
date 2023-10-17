@@ -12,7 +12,7 @@ import FeatureToggling
 
 @MainActor
 class CalculatorViewModel: ObservableObject {
-    @Published var commands: [CommandResult] = []
+    @Published var commands: [CommandResult]
     @Published var showErrorLabel = false
 
     private let logicCore = LogicCore()
@@ -25,6 +25,7 @@ class CalculatorViewModel: ObservableObject {
     var equations: [Command]
         
     init() {
+        commands = [.init(expression: "0", result: "")]
         equations = [.divide, .multiply, .minus, .plus]
             .filter { $0.isEnabled }
     }
