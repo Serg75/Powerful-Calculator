@@ -154,23 +154,23 @@ public class LogicCore {
         var result = [(String, Double?)]()
         switch expression {
         case let .number(val):
-            result.append((val.value.cleanString, nil))
+            result.append((val.stringValue, nil))
         case let .addition(left, right):
             result.append(contentsOf: traverse(left))
             result.append(("+", nil))
-            result.append((right.value.cleanString, evaluate(expression)))
+            result.append((right.stringValue, evaluate(expression)))
         case let .subtraction(left, right):
             result.append(contentsOf: traverse(left))
             result.append(("-", nil))
-            result.append((right.value.cleanString, evaluate(expression)))
+            result.append((right.stringValue, evaluate(expression)))
         case let .multiplication(left, right):
             result.append(contentsOf: traverse(left))
             result.append(("*", nil))
-            result.append((right.value.cleanString, evaluate(expression)))
+            result.append((right.stringValue, evaluate(expression)))
         case let .division(left, right):
             result.append(contentsOf: traverse(left))
             result.append(("/", nil))
-            result.append((right.value.cleanString, evaluate(expression)))
+            result.append((right.stringValue, evaluate(expression)))
         case let .sine(value):
             result.append(contentsOf: traverse(value))
             result.append(("sin(\(evaluate(value).cleanString))", evaluate(expression)))
