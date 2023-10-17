@@ -14,7 +14,7 @@ struct CalculatorView: View {
     var body: some View {
         VStack {
             Text("Calculator")
-                .font(.largeTitle)
+                .font(.system(size: 35, weight: .regular))
             
             DynamicStack(verticalAlignment: .bottom, spacing: 10) {
                 let lastCommand = calculatorViewModel.commands.last

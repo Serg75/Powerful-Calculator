@@ -14,7 +14,7 @@ struct OperationButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.title)
+            .font(.system(size: 30, weight: .regular))
             .frame(maxWidth: .infinity)
             .frame(height: isMergedRows ? 108 : 50)
             .background(backgroundColor)
