@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreCalculation
+import FeatureToggling
 
 class CalculatorViewModel: ObservableObject {
     @Published var commands: [CommandResult] = []
@@ -14,14 +15,16 @@ class CalculatorViewModel: ObservableObject {
     private let logicCore = LogicCore()
     private var expressions = [ArithmeticExpression]()
     
+    var equations: [Command]
+        
+    init() {
+        equations = [.divide, .multiply, .minus, .plus]
+            .filter { $0.isEnabled }
+    }
+    
     func handleButtonTap(_ button: Command) {
         expressions = logicCore.updateExpressions(expressions, command: button)
         generateCommandResults(expressions)
-    }
-    
-    func isButtonEnabled(_ button: Command) -> Bool {
-        // the feature toggling logic
-        return true
     }
     
     func generateCommandResults(_ expressions: [ArithmeticExpression]) {

@@ -1,0 +1,8 @@
+{
+    "addition": true,
+    "subtraction": true,
+    "multiplication": true,
+    "division": true,
+    "sinFunction": true,
+    "cosFunction": true,
+}

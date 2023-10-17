@@ -10,12 +10,13 @@ import SwiftUI
 struct OperationButtonStyle: ButtonStyle {
     let backgroundColor: Color = Color.blue
     let foregroundColor: Color = Color.white
+    var isMergedRows: Bool = false
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.title)
             .frame(maxWidth: .infinity)
-            .frame(height: 50)
+            .frame(height: isMergedRows ? 108 : 50)
             .background(backgroundColor)
             .foregroundColor(foregroundColor)
             .cornerRadius(8)
