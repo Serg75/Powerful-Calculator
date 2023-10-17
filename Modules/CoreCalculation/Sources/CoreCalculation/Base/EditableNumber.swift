@@ -7,6 +7,8 @@
 
 import Foundation
 
+fileprivate let MAX_LENGTH = 14
+
 public struct EditableNumber: CustomStringConvertible, Equatable {
     private(set) var value: Double = 0.0
     private(set) var stringValue: String = "0"
@@ -25,6 +27,10 @@ public struct EditableNumber: CustomStringConvertible, Equatable {
     }
     
     mutating func add(_ input: Character) {
+        guard stringValue.count < MAX_LENGTH else {
+            return
+        }
+        
         if input.isNumber {
             if stringValue == "0" {
                 stringValue = String(input)
