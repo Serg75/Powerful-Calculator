@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    @EnvironmentObject var colorThemeManager: ColorSchemeManager
     @ObservedObject var calculatorViewModel: CalculatorViewModel
 
     var body: some View {
@@ -45,7 +46,7 @@ struct CalculatorView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .listStyle(PlainListStyle())
-                        .border(Color.gray)
+                        .border(Color(.systemGray3))
                     }
                     
                     if calculatorViewModel.showErrorLabel {
@@ -61,6 +62,7 @@ struct CalculatorView: View {
             }
         }
         .padding()
+        .preferredColorScheme(colorThemeManager.colorScheme)
     }
 }
 
@@ -69,7 +71,7 @@ struct RowBackgroundColorModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .listRowBackground(!isDimmed ? Color.white : Color(.systemGray5))
+            .listRowBackground(!isDimmed ? Color(.systemBackground) : Color(.systemGray5))
     }
 }
 
@@ -95,4 +97,5 @@ struct RowForegroundColorModifier: ViewModifier {
         CommandResult(expression: "sin(30)", result: "0.5")
     ]
     return CalculatorView(calculatorViewModel: defaultViewModel)
+        .environmentObject(ColorSchemeManager())
 }

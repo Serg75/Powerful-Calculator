@@ -6,4 +6,5 @@
     "division": true,
     "sinFunction": true,
     "cosFunction": true,
+    "isDarkMode": false,
 }

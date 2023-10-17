@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OperationButtonStyle: ButtonStyle {
     let backgroundColor: Color = Color.blue
-    let foregroundColor: Color = Color.white
+    let foregroundColor: Color = Color(.systemGray6)
     var isMergedRows: Bool = false
 
     func makeBody(configuration: Configuration) -> some View {

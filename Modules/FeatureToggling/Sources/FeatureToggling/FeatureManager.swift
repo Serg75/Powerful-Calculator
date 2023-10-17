@@ -10,7 +10,7 @@ import CoreCalculation
 
 // Conforming to CodingKeyRepresentable because this enum uses as keys
 // in a dictionary
-enum Feature: String, CodingKeyRepresentable, Codable {
+public enum Feature: String, CodingKeyRepresentable, Codable {
     case bitcoinConversion
     case addition
     case subtraction
@@ -18,10 +18,11 @@ enum Feature: String, CodingKeyRepresentable, Codable {
     case division
     case sinFunction
     case cosFunction
+    case isDarkMode
 }
 
-class FeatureManager {
-    static let shared = FeatureManager()
+public class FeatureManager {
+    public static let shared = FeatureManager()
     
     private var featureFlags: [Feature: Bool] = [:]
     
