@@ -66,12 +66,12 @@ struct CalculatorButtonMatrix: View {
                     Grid {
                         let firstMergedRow = (equations.count - 2) * 2
                         ForEach(0..<equations.count, id: \.self) { index in
-                            //                        Button(index: equations[index].rawValue, color: .mint, isMergedRows: index >= firstMergedRow)
+                            let mergedRowCount = index >= firstMergedRow ? (equations.count > 1 ? 2 : 4) : 1
                             let button = equations[index]
                             Button(button.rawValue) {
                                 calculatorViewModel.handleButtonTap(button)
                             }
-                            .buttonStyle(OperationButtonStyle(isMergedRows: index >= firstMergedRow))
+                            .buttonStyle(OperationButtonStyle(mergedRowCount: mergedRowCount))
                         }
                     }
                 }
