@@ -8,9 +8,7 @@
 import Foundation
 import CoreCalculation
 
-// Conforming to CodingKeyRepresentable because this enum uses as keys
-// in a dictionary
-public enum Feature: String, CodingKeyRepresentable, Codable {
+public enum Feature: String, Codable, CodingKey {
     case bitcoinConversion
     case addition
     case subtraction
@@ -19,6 +17,17 @@ public enum Feature: String, CodingKeyRepresentable, Codable {
     case sinFunction
     case cosFunction
     case isDarkMode
+    
+    private enum CodingKeys : CodingKey {
+        case bitcoinConversion
+        case addition
+        case subtraction
+        case multiplication
+        case division
+        case sinFunction
+        case cosFunction
+        case isDarkMode
+    }
 }
 
 public class FeatureManager {
@@ -35,7 +44,7 @@ public class FeatureManager {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                featureFlags = try decoder.decode([Feature: Bool].self, from: data)
+                featureFlags = try decoder.decode(CodableDictionary.self, from: data).decoded
             } catch {
                 print("Error loading feature flags from JSON: \(error)")
             }
