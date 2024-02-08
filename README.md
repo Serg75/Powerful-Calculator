@@ -1,6 +1,8 @@
 # Powerful Calculator
 
-This is a feature-rich calculator with support for arithmetic operations, trigonometric functions, Bitcoin conversion, and a command history. It allows you to switch between two color themes: dark mode and light mode.
+This is a feature-rich calculator with support for arithmetic operations, trigonometric functions, Bitcoin conversion, and a command history. It allows you to switch between two color themes: dark mode and light mode.\
+\
+It was created as a test assignment - see Requirements.pdf.
 
 ## Features
 - Arithmetic operations: addition, subtraction, multiplication, and division.
